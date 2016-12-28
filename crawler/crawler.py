@@ -23,6 +23,7 @@ for a in link:
 		# JS Links
 		a_string = 'Not Valid Link'
 	if a_string[0] == '/':
+		# Realtive Links
 		found_link.write(a_string + '\n')
 	#else:	
 	#	found_link.write(a_string + '\n')
