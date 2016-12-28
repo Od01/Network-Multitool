@@ -25,8 +25,8 @@ for a in link:
 	if a_string[0] == '/':
 		# Realtive Links
 		found_link.write(a_string + '\n')
-	#else:	
-	#	found_link.write(a_string + '\n')
+	else:	
+		found_link.write(a_string + '\n')
 found_link.close()
 
 # Write out the rest of the if statements to filter out external links
