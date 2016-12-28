@@ -19,22 +19,29 @@ print """
 
 
 Please Choose from these Tool:
-1. Port Poker(Port Scanner)
+1. Port Poker(Port Scanner) 
 2. Hex to Dec Converter
 3. DNS Lookup
 4. DNS Brute Force
 """
 
+# Port Poker(Port Scanner) | Line 58
+# Hex to Dec Converter | Line 127
+# DNS Lookup | Line 147
+# DNS Brute Force | Line 206
+
 user_choice = raw_input("Please select your tool!")
 
 if user_choice == 1:
-	portPoker()
+	return portPoker()
 if user_choice == 2:
 	hexToDec()
 if user_choice == 3:
 	DNSCall()
 if user_choice == 4:
 	subDomains()
+
+# ^^^ This isn't working	
 
 
 """
