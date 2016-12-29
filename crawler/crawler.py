@@ -25,6 +25,18 @@ for a in link:
 	if a_string[0] == '/':
 		# Realtive Links
 		found_link.write(a_string + '\n')
+	if 'http://' + url in a_string:
+		# Links from the same site
+		found_link.write(a_string + '\n')
+	if 'https://' + url in a_string:
+		# Links from the same site with SSL
+		found_link.write(a_string + '\n')
+	if 'http://www.' + url in a_string:
+		# Links from the same site
+		found_link.write(a_string + '\n')
+	if 'https://www.' + url in a_string:
+		# Links from the same site with SSL
+		found_link.write(a_string + '\n')
 	else:	
 		found_link.write(a_string + '\n')
 found_link.close()
