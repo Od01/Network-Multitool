@@ -37,8 +37,6 @@ for a in link:
 	if 'https://www.' + url in a_string:
 		# Links from the same site with SSL
 		found_link.write(a_string + '\n')
-	else:	
-		found_link.write(a_string + '\n')
+	#else:	
+	#	found_link.write(a_string + '\n')
 found_link.close()
-
-# Write out the rest of the if statements to filter out external links
