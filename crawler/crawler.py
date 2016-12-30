@@ -81,8 +81,6 @@ new_pages = []
 new_pages = open('nodups_links.txt', 'r')
 new_pages_read = new_pages.read().splitlines()
 
-print new_pages
-
 for z in new_pages_read:
 	directories = requests.get('http://' + url + z)
 	status = directories.status_code
@@ -90,3 +88,6 @@ for z in new_pages_read:
 new_pages.close()	
 
 # Need to figure out how to add the non duplicates to the original file
+# Need to figure out how to take the duplicate list, check the statuses of those pages and then crawl them
+# after that I need to figure out how to run them through the duplication filtering process /* Maybe make a master file */
+# Also need to put the if statements into a function
