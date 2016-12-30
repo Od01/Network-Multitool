@@ -77,4 +77,14 @@ for a in result:
 
 crawled_links.close()
 
+new_pages = open('nodups_links.txt', 'r')
+new_pages_read = new_pages.read().splitlines()
+
+for z in new_pages_read:
+	directories = requests.get('http://' + url + z)
+	#status = directories.status_code
+	print directories
+
+new_pages.close()	
+
 # Need to figure out how to add the non duplicates to the original file
