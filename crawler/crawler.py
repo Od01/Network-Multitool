@@ -81,7 +81,7 @@ new_pages = []
 new_pages = open('nodups_links.txt', 'r')
 new_pages_read = new_pages.read().splitlines()
 
-print new_pages
+print new_pages_read
 
 for z in new_pages_read:
 	directories = requests.get('http://' + url + z)
