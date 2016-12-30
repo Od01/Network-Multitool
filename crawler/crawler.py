@@ -49,6 +49,32 @@ for a in link:
 		# Links from the same site with SSL
 		found_link.write(a_string + '\n')
 	#else:	
-	#	found_link.write(a_string + '\n')
-	
+	#	found_link.write(a_string + '\n') # testing only
+
 found_link.close()
+
+# Open newly created file full of links
+crawled_links = open('found_links.txt', 'r')
+stored_urls = crawled_links.read().splitlines()
+
+def remove_duplicates(values):
+	output = []
+	seen = set()
+	for value in values:
+		if value not in seen:
+			output.append(value)
+			seen.add(value)
+	return output
+	
+result = remove_duplicates(stored_urls)
+
+no_dups = []
+no_dups = open('nodups_links.txt', 'w')
+
+# For readability
+for a in result:
+	no_dups.write(a + '\n')
+
+crawled_links.close()
+
+# Need to figure out how to add the non duplicates to the original file
