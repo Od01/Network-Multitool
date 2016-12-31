@@ -70,18 +70,20 @@ result = remove_duplicates(found_link)
 
 print result
 
+#for verifying and crawling resulting pages
 for b in result:
 	directories = requests.get('http://' + url + b)
 	status = directories.status_code
-	print status
-	#if status == 200:
-
+	# print status
+	if status == 200:
+		makeRequest(b)
+		makeFilter(link)
+		remove_duplicates()
 
 # print result
 
 
 
-# Need to figure out how to add the non duplicates to the original file
-# Need to figure out how to take the duplicate list, check the statuses of those pages and then crawl them
-# after that I need to figure out how to run them through the duplication filtering process /* Maybe make a master file */
-# Also need to put the if statements into a function
+# Need to figure out how to use my three functions to cralw the sites that were found in the original page
+# Also need to figure out how to take the original set of urls and add in the urls from all the other pages while also
+# filtering out duplicates
