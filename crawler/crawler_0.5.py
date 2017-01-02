@@ -1,9 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-# Creating array for our links
-found_link = []
-
 # creating requests from user input
 url = raw_input("Please enter a domain to crawl, without the 'http://www' part : ")
 
@@ -18,12 +15,14 @@ def makeRequest(url):
 	
 
 def makeFilter(link):
+	# Creating array for our links
+	found_link = []
 	for a in link:
 		a = a.get('href')
 		a_string = str(a)
 
 		# if statement to filter our links
-
+		'''
 		if a_string[0] == '#':
 			# Same page anchor tags
 			a_string = 'Not Valid Link'
@@ -31,7 +30,7 @@ def makeFilter(link):
 		if a_string == 'javascript:;':
 			# JS Links
 			a_string = 'Not Valid Link'
-
+		'''
 		if a_string[0] == '/':
 			# Realtive Links
 			found_link.append(a_string)
@@ -53,7 +52,11 @@ def makeFilter(link):
 			found_link.append(a_string)
 		#else:	
 		#	found_link.write(a_string + '\n') # testing only
-makeFilter(makeRequest(url))		
+	output = found_link
+
+	return output
+
+# makeFilter(makeRequest(url))		
 
 # Function for removing duplicates
 def remove_duplicates(values):
@@ -65,28 +68,24 @@ def remove_duplicates(values):
 			seen.add(value)
 	return output
 
-# Run the function with our list	
-result = remove_duplicates(found_link)
 
-print result
+# Run the function with our list in this order -> Makes the request -> Filters the links -> Removes duplicates
+def createURLList(values):
+	requests = makeRequest(values)
+	new_list = makeFilter(requests)
+	filtered_list = remove_duplicates(new_list)
 
-#for verifying and crawling resulting pages
-'''
+	return filtered_list
+
+result = createURLList(url)
+
+# for verifying and crawling resulting pages
 for b in result:
-	directories = requests.get('http://' + url + b)
-	status = directories.status_code
+	sub_directories = url + createURLList(b)
+	crawler = []
+	crawler.append(sub_directories)
 
-	all_urls = []
-	# print status
-	if status == 200:
-		makeRequest(b)
-		makeFilter(link)
-		remove_duplicates()
-		all_urls.append(b)
-
-print b		
-'''
-
+	print crawler
 
 # Need to figure out how to use my three functions to cralw the sites that were found in the original page
 # Also need to figure out how to take the original set of urls and add in the urls from all the other pages while also
