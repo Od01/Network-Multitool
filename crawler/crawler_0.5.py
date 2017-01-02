@@ -12,10 +12,10 @@ def makeRequest(url):
 	# Adding in BS4 for finding a tags in HTML
 	soup =  BeautifulSoup(r.content, 'html.parser')
 	# Writes a as the link found in the href
-	global link
-	link = soup.find_all('a')
-
-makeRequest(url)	
+	# global link
+	output = soup.find_all('a')
+	return output
+	
 
 def makeFilter(link):
 	for a in link:
@@ -53,7 +53,7 @@ def makeFilter(link):
 			found_link.append(a_string)
 		#else:	
 		#	found_link.write(a_string + '\n') # testing only
-makeFilter(link)		
+makeFilter(makeRequest(url))		
 
 # Function for removing duplicates
 def remove_duplicates(values):
@@ -71,15 +71,21 @@ result = remove_duplicates(found_link)
 print result
 
 #for verifying and crawling resulting pages
+'''
 for b in result:
 	directories = requests.get('http://' + url + b)
 	status = directories.status_code
+
+	all_urls = []
 	# print status
 	if status == 200:
 		makeRequest(b)
 		makeFilter(link)
 		remove_duplicates()
+		all_urls.append(b)
 
+print b		
+'''
 
 
 # Need to figure out how to use my three functions to cralw the sites that were found in the original page
