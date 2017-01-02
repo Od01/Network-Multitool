@@ -80,10 +80,9 @@ for b in result:
 		makeFilter(link)
 		remove_duplicates()
 
-# print result
-
 
 
 # Need to figure out how to use my three functions to cralw the sites that were found in the original page
 # Also need to figure out how to take the original set of urls and add in the urls from all the other pages while also
 # filtering out duplicates
+# Possibly use dictionaries to keep track of your links crawled from other pages
