@@ -81,13 +81,13 @@ result = createURLList(url)
 
 # for verifying and crawling resulting pages
 for b in result:
-	sub_directories = url + createURLList(b)
+	sub_directories = createURLList(b)
 	crawler = []
 	crawler.append(sub_directories)
 
 	print crawler
 
-# Need to figure out how to use my three functions to cralw the sites that were found in the original page
+# Need to figure out the error that comes up when I run the script.
 # Also need to figure out how to take the original set of urls and add in the urls from all the other pages while also
 # filtering out duplicates
 # Possibly use dictionaries to keep track of your links crawled from other pages
