@@ -9,7 +9,6 @@ def makeRequest(url):
 	# Adding in BS4 for finding a tags in HTML
 	soup =  BeautifulSoup(r.content, 'html.parser')
 	# Writes a as the link found in the href
-	# global link
 	output = soup.find_all('a')
 	return output
 	
@@ -20,17 +19,8 @@ def makeFilter(link):
 	for a in link:
 		a = a.get('href')
 		a_string = str(a)
-
+		# print "this is string_a", a
 		# if statement to filter our links
-		'''
-		if a_string[0] == '#':
-			# Same page anchor tags
-			a_string = 'Not Valid Link'
-
-		if a_string == 'javascript:;':
-			# JS Links
-			a_string = 'Not Valid Link'
-		'''
 		if a_string[0] == '/':
 			# Realtive Links
 			found_link.append(a_string)
@@ -53,10 +43,9 @@ def makeFilter(link):
 		#else:	
 		#	found_link.write(a_string + '\n') # testing only
 	output = found_link
+	# print a_string
 
-	return output
-
-# makeFilter(makeRequest(url))		
+	return output	
 
 # Function for removing duplicates
 def remove_duplicates(values):
@@ -68,7 +57,6 @@ def remove_duplicates(values):
 			seen.add(value)
 	return output
 
-
 # Run the function with our list in this order -> Makes the request -> Filters the links -> Removes duplicates
 def createURLList(values):
 	requests = makeRequest(values)
@@ -79,13 +67,15 @@ def createURLList(values):
 
 result = createURLList(url)
 
+# print result
+
 # for verifying and crawling resulting pages
 for b in result:
-	sub_directories = createURLList(b)
+	sub_directories = createURLList(url + b)
 	crawler = []
 	crawler.append(sub_directories)
 
-	print b
+	#print crawler
 
 # Need to figure out the error that comes up when I run the script.
 # Also need to figure out how to take the original set of urls and add in the urls from all the other pages while also
