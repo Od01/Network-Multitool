@@ -85,7 +85,7 @@ for b in result:
 	crawler = []
 	crawler.append(sub_directories)
 
-	print crawler
+	print b
 
 # Need to figure out the error that comes up when I run the script.
 # Also need to figure out how to take the original set of urls and add in the urls from all the other pages while also
