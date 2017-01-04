@@ -1,10 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
+import sys
 
 # creating requests from user input
 url = raw_input("Please enter a domain to crawl, without the 'http://www' part : ")
 
 def makeRequest(url):
+	print("Trying...", url)
 	r = requests.get('http://' + url)
 	# Adding in BS4 for finding a tags in HTML
 	soup =  BeautifulSoup(r.content, 'html.parser')
@@ -19,7 +21,10 @@ def makeFilter(link):
 	for a in link:
 		a = a.get('href')
 		a_string = str(a)
-		# print "this is string_a", a
+
+		if not a_string:
+  			continue
+
 		# if statement to filter our links
 		if a_string[0] == '/':
 			# Realtive Links
@@ -40,6 +45,7 @@ def makeFilter(link):
 		if 'https://www.' + url in a_string:
 			# Links from the same site with SSL
 			found_link.append(a_string)
+
 		#else:	
 		#	found_link.write(a_string + '\n') # testing only
 	output = found_link
@@ -75,9 +81,9 @@ for b in result:
 	crawler = []
 	crawler.append(sub_directories)
 
-	#print crawler
+	print crawler
 
-# Need to figure out the error that comes up when I run the script.
-# Also need to figure out how to take the original set of urls and add in the urls from all the other pages while also
-# filtering out duplicates
-# Possibly use dictionaries to keep track of your links crawled from other pages
+# print remove_duplicates(crawler)	
+
+# Need to figure out the error that comes up when I run the script, fails after a few links
+# See http://stackoverflow.com/questions/41454811/issue-with-web-crawler-indexerror-string-index-out-of-range for reference.
