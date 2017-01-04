@@ -74,16 +74,23 @@ def createURLList(values):
 result = createURLList(url)
 
 # print result
+crawled_urls =[]
+crawled_urls = open('crawled_urls.txt', 'w')
 
 # for verifying and crawling resulting pages
 for b in result:
 	sub_directories = createURLList(url + b)
 	crawler = []
 	crawler.append(sub_directories)
+	crawler = str(crawler)
+	crawled_urls.write(crawler)
 
-	print crawler
+crawled_urls.close()
+
+	# print crawler
 
 # print remove_duplicates(crawler)	
 
-# Need to figure out the error that comes up when I run the script, fails after a few links
+# Has the crawled links going into a txt file. Still need to figure out why this is failing.
+# Also need to run this through the duplicates function, need to filter out the duplicates
 # See http://stackoverflow.com/questions/41454811/issue-with-web-crawler-indexerror-string-index-out-of-range for reference.
