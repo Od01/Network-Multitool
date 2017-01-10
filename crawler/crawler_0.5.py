@@ -83,7 +83,7 @@ for b in result:
 	crawler = []
 	crawler.append(sub_directories)
 	crawler = str(crawler)
-	crawled_urls.write(crawler)
+	crawled_urls.write(crawler + '\n')
 
 crawled_urls.close()
 
