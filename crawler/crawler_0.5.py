@@ -80,6 +80,7 @@ crawled_urls = open('crawled_urls.txt', 'w')
 # for verifying and crawling resulting pages
 for b in result:
 	sub_directories = createURLList(url + b)
+	remove_duplicates(sub_directories)
 	crawler = []
 	crawler.append(sub_directories)
 	crawler = str(crawler)
@@ -87,10 +88,6 @@ for b in result:
 
 crawled_urls.close()
 
-	# print crawler
-
-# print remove_duplicates(crawler)	
-
-# Has the crawled links going into a txt file. Still need to figure out why this is failing.
-# Also need to run this through the duplicates function, need to filter out the duplicates
-# See http://stackoverflow.com/questions/41454811/issue-with-web-crawler-indexerror-string-index-out-of-range for reference.
+# Script is able to crawl other sites without issue.
+# Need to dump all the crawled links into one array and make sure that we can remove all the duplicates.
+# Also need to figure out how to clean it up.
