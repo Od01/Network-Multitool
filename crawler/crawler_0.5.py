@@ -80,14 +80,19 @@ crawled_urls = open('crawled_urls.txt', 'w')
 # for verifying and crawling resulting pages
 for b in result:
 	sub_directories = createURLList(url + b)
-	remove_duplicates(sub_directories)
-	crawler = []
-	crawler.append(sub_directories)
-	crawler = str(crawler)
-	crawled_urls.write(crawler + '\n')
+	# remove_duplicates(sub_directories)
+	for z in sub_directories: # goes through the arrays crawled 
+		crawler = []
+		crawler.append(z)
+		crawler = remove_duplicates(crawler) # remove duplicates from list
+		crawler = str(crawler)
+		crawled_urls.write(crawler + '\n')
+	# crawler.append(sub_directories)
+	# crawler = str(crawler)
+	# crawled_urls.write(crawler + '\n')
 
 crawled_urls.close()
 
 # Script is able to crawl other sites without issue.
-# Need to dump all the crawled links into one array and make sure that we can remove all the duplicates.
-# Also need to figure out how to clean it up.
+# Added putting all the links into one array.
+# I'm thinking that we take those crawled links make them a url and run the same script and dump them into the same file
