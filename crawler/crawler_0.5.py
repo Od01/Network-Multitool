@@ -87,6 +87,13 @@ for b in result:
 		crawler = remove_duplicates(crawler) # remove duplicates from list
 		crawler = str(crawler)
 		crawled_urls.write(crawler + '\n')
+'''		for x in crawler:
+			crawled = createURLList(url + x)
+			# crawled_list = []
+			crawler.append(x)
+			crawler = remove_duplicates(crawler)
+		crawler = str(crawler)
+		crawled_urls.write(crawler + '\n')'''
 	# crawler.append(sub_directories)
 	# crawler = str(crawler)
 	# crawled_urls.write(crawler + '\n')
