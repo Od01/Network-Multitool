@@ -87,19 +87,4 @@ for b in result:
 		crawler = remove_duplicates(crawler) # remove duplicates from list
 		crawler = str(crawler)
 		crawled_urls.write(crawler + '\n')
-'''		for x in crawler:
-			crawled = createURLList(url + x)
-			# crawled_list = []
-			crawler.append(x)
-			crawler = remove_duplicates(crawler)
-		crawler = str(crawler)
-		crawled_urls.write(crawler + '\n')'''
-	# crawler.append(sub_directories)
-	# crawler = str(crawler)
-	# crawled_urls.write(crawler + '\n')
-
 crawled_urls.close()
-
-# Script is able to crawl other sites without issue.
-# Added putting all the links into one array.
-# I'm thinking that we take those crawled links make them a url and run the same script and dump them into the same file
