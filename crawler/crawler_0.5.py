@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import sys
 
 # creating requests from user input
-url = raw_input("Please enter a domain to crawl, without the 'http://www' part : ")
+url = raw_input("Bitch, put in your domain! Without the 'http://www' part : ")
 
 def makeRequest(url):
 	print("Trying...", url)
