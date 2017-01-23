@@ -60,7 +60,7 @@ def remove_duplicates(values):
 			seen.add(value)
 	return output
 
-# Run the function with our list in this order -> Makes the request -> Filters the links -> Removes duplicates
+# Makes the request -> Filters the links -> Removes duplicates
 def createURLList(values):
 	try:
 		requests = makeRequest(values)
