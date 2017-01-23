@@ -1,6 +1,6 @@
+import sys
 import requests
 from bs4 import BeautifulSoup
-import sys
 
 # creating requests from user input
 url = raw_input("Bitch, put in your domain! Without the 'http://www' part : ")
@@ -9,11 +9,10 @@ def makeRequest(url):
 	print("Trying...", url)
 	r = requests.get('http://' + url)
 	# Adding in BS4 for finding a tags in HTML
-	soup =  BeautifulSoup(r.content, 'html.parser')
+	soup =  BeautifulSoup(r.content, 'html.parser') 
 	# Writes a as the link found in the href
 	output = soup.find_all('a')
 	return output
-	
 
 def makeFilter(link):
 	# Creating array for our links
@@ -46,8 +45,6 @@ def makeFilter(link):
 			# Links from the same site with SSL
 			found_link.append(a_string)
 
-		#else:	
-		#	found_link.write(a_string + '\n') # testing only
 	output = found_link
 	# print a_string
 
@@ -83,7 +80,7 @@ def createURLList(values):
 result = createURLList(url)
 
 # print result
-crawled_urls =[]
+crawled_urls = []
 crawled_urls = open('crawled_urls.txt', 'w')
 
 # for verifying and crawling resulting pages
