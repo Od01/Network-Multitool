@@ -23,7 +23,8 @@ def makeFilter(link):
 
 		if not a_string:
   			continue
-
+  		if a_string == 'https://www' + url:
+  			continue	
 		# if statement to filter our links
 		if a_string[0] == '/':
 			# Realtive Links
