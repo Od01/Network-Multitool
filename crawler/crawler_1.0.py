@@ -22,8 +22,6 @@ def makeFilter(link):
 		a_string = str(a)
 
 		if not a_string:
-  			continue
-  		if a_string == 'https://www' + url:
   			continue	
 		# if statement to filter our links
 		if a_string[0] == '/':
@@ -63,6 +61,7 @@ def remove_duplicates(values):
 
 # Makes the request -> Filters the links -> Removes duplicates
 def createURLList(values):
+	global filtered_list
 	try:
 		requests = makeRequest(values)
 	except:
