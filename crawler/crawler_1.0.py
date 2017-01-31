@@ -87,16 +87,10 @@ crawled_urls = open('crawled_urls.txt', 'w')
 for b in result:
 	sub_directories = createURLList(url + b) # issue is right here, it's adding the url on the full URL in some instances
 
-
 	# remove_duplicates(sub_directories)
 	for z in sub_directories: # goes through the arrays crawled 
 		crawler = []
-		#print("Trying" + z)
-		bad_url = "https://" + url + 'https://www' + url
-		if z == bad_url:
-			continue
-		else:
-			crawler.append(z)
+		crawler.append(z)
 		crawler = remove_duplicates(crawler) # remove duplicates from list
 		crawler = str(crawler)
 		crawled_urls.write(crawler + '\n')
