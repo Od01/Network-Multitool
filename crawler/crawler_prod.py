@@ -4,13 +4,15 @@ from scrapy.selector import HtmlXPathSelector
 from scrapy.item import Item
 from scrapy.spider import BaseSpider
 
-from run_first import *
+#from run_first import *
+
+# domain = userInput()
 
 class InputSpider(CrawlSpider):
         name = "Input"
-        #user_input = raw_input("Please enter URL. Please do not include http://: ")
-        allowed_domains = [userInput()]
-        start_urls = ["http://" + userInput() + "/"]
+        user_input = ""
+        allowed_domains = [user_input]
+        start_urls = ["http://" + user_input + "/"]
 
         # allow=() is used to match all links
         rules = [
