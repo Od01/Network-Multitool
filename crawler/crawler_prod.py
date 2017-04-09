@@ -4,8 +4,8 @@ from scrapy.selector import HtmlXPathSelector
 from scrapy.item import Item
 from scrapy.spider import BaseSpider
 
-class hsleidenSpider(CrawlSpider):
-        name = "hsleiden1"
+class InputSpider(CrawlSpider):
+        name = "Input"
         allowed_domains = ["quotes.toscrape.com"]
         start_urls = ["http://quotes.toscrape.com/"]
 
@@ -17,7 +17,7 @@ class hsleidenSpider(CrawlSpider):
 
         def parse_item(self, response):
             x = HtmlXPathSelector(response)
-            filename = "hsleiden-output.txt"
+            filename = "output.txt"
             open(filename, 'w').write(response.url + "\n")
             #file = open(filename, "w")
             #for resp in x:
