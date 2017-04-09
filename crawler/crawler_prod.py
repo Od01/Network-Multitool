@@ -12,15 +12,9 @@ class InputSpider(CrawlSpider):
         # allow=() is used to match all links
         rules = [
         Rule(SgmlLinkExtractor(allow=()), follow=True, callback='parse_item')
-        #Rule(SgmlLinkExtractor(allow=()), callback='parse_item'), # Added this to first rule
         ]
 
         def parse_item(self, response):
             x = HtmlXPathSelector(response)
             filename = "output.txt"
-            open(filename, 'w').write(response.url + "\n")
-            #file = open(filename, "w")
-            #for resp in x:
-                #file.write(resp.url + "\n")
-
-                # got from http://stackoverflow.com/questions/13740825/trying-to-crawl-all-links-of-a-webpage-with-scrapy-but-i-cannot-output-the-link
+            open(filename, 'ab').write(response.url + "\n")
