@@ -14,7 +14,7 @@ from scrapy.http import Request
 class InputSpider(CrawlSpider):
         name = "Input"
         #user_input = ""
-        allowed_domains = [user_input]
+        allowed_domains = [""]
         #start_urls = ["http://quotes.toscrape.com/"]
         def start_requests(self):
             yield Request(url=self.user_input)
