@@ -5,17 +5,15 @@ from scrapy.item import Item
 from scrapy.spider import BaseSpider
 from scrapy import Request
 from scrapy.http import Request
-#import request
 
-#from run_first import userInput
+#from run_first import *
 
-#userInput()
 
 class InputSpider(CrawlSpider):
         name = "Input"
-        #user_input = ""
-        allowed_domains = [""]
+        allowed_domains = ["quotes.toscrape.com"]
         #start_urls = ["http://quotes.toscrape.com/"]
+
         def start_requests(self):
             yield Request(url=self.user_input)
 
