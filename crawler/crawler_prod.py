@@ -2,22 +2,21 @@ from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 from scrapy.selector import HtmlXPathSelector
 from scrapy.item import Item
-from scrapy.spider import BaseSpider
+from scrapy.spiders import BaseSpider
 from scrapy import Request
 from scrapy.http import Request
-
 #from run_first import *
-
 
 class InputSpider(CrawlSpider):
         name = "Input"
-        allowed_domains = ["quotes.toscrape.com"]
-        #start_urls = ["http://quotes.toscrape.com/"]
+        #allowed_domains = ["example.com"]
+
+        #def allowed_domains(self):
+            #self.allowed_domains = user_input
 
         def start_requests(self):
             yield Request(url=self.user_input)
 
-        # allow=() is used to match all links
         rules = [
         Rule(SgmlLinkExtractor(allow=()), follow=True, callback='parse_item')
         ]
