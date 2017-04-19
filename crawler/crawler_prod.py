@@ -18,10 +18,17 @@ class InputSpider(CrawlSpider):
         #def start_requests(self):
             #yield Request(url=self.user_input)
 
-        def __init__(self, *args, **kwargs):
-            inputs = kwargs.get('urls', '').split(',') or []
-            self.allowed_domains = [urlparse(d).netloc for d in inputs]
-            self.start_urls = [urlparse(c).netloc for c in inputs]
+# Stack Overflow edits
+        #def __init__(self, *args, **kwargs):
+            #inputs = kwargs.get('urls', '').split(',') or []
+            #self.allowed_domains = [urlparse(d).netloc for d in inputs]
+            # self.start_urls = [urlparse(c).netloc for c in inputs] # For start_urls
+# End Stack Overflow edits
+
+        def __init__(self, url=None, *args, **kwargs):
+            super(InputSpider, self).__init__(*args, **kwargs)
+            self.allowed_domains = [url]
+            self.start_urls = ["http://" + url]
 
         rules = [
         Rule(SgmlLinkExtractor(allow=()), follow=True, callback='parse_item')
