@@ -23,3 +23,6 @@ class InputSpider(CrawlSpider):
             x = HtmlXPathSelector(response)
             filename = "output.txt"
             open(filename, 'ab').write(response.url + "\n")
+
+print "Crawling site..."
+print "See output.txt for links"

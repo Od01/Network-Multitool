@@ -14,6 +14,6 @@ def userInput():
     checkString("http://", user_input, "Please don't include http://. Try again")
     checkString("https://", user_input, "Please don't include https://. Try again")
 
-    os.system("scrapy runspider -a url=" + user_input + " crawler_prod.py")
+    os.system("scrapy runspider -a url=" + user_input + " -s LOG_ENABLED=0 crawler_prod.py")
 
 userInput()
