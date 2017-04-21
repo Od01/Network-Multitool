@@ -3,8 +3,9 @@ import sys
 
 def userInput():
     user_input = raw_input("Please enter URL. Please do not include http://: ")
-    # forbidden = "http://"
+    user_input.lower()
 
+    # Check for protocol
     def checkString(forbidden, string, error_message):
         if forbidden in string:
             user_input = None
