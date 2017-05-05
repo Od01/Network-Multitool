@@ -1,5 +1,6 @@
 from time import gmtime, strftime
-
+import random
+import sys
 
 # Start Script
 #Display time Started
@@ -11,6 +12,20 @@ pwd = "password"
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
             "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
             "w", "x", "y", "z"]
+
+length = "12345678"
+
+
+#print ''.join(random.sample(letters, len(length)))
+
+
+
+for i in xrange(sys.maxint):
+    guess = ''.join(random.sample(letters, len(length)))
+    print guess
+    if guess == pwd:
+        print "Password Cracked. Password is " + guess
+        exit()
 
 
 
