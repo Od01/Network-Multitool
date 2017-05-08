@@ -3,29 +3,28 @@ import random
 import sys
 
 # Start Script
-#Display time Started
-print "Script Started at " + strftime("%a, %d %b %Y %H:%M:%S +0000")
 
 # Password trying to crack, will convert to password list
-pwd = "password"
+pwd = "pas"
 
-letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-            "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
-            "w", "x", "y", "z"]
+def cracker():
+    # Prints time started
+    print "Script Started at " + strftime("%a, %d %b %Y %H:%M:%S +0000")
+    letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+                "w", "x", "y", "z"]
 
-length = "12345678"
+    length = "123"
 
 
-#print ''.join(random.sample(letters, len(length)))
+    for i in xrange(sys.maxint):
+        guess = ''.join(random.sample(letters, len(length)))
+        print guess
+        if guess == pwd:
+            print "Password Cracked. Password is " + guess
+            exit()
 
-
-
-for i in xrange(sys.maxint):
-    guess = ''.join(random.sample(letters, len(length)))
-    print guess
-    if guess == pwd:
-        print "Password Cracked. Password is " + guess
-        exit()
+cracker()
 
 
 
