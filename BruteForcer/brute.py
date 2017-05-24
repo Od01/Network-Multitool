@@ -1,21 +1,22 @@
 from time import gmtime, strftime
 import random
 import sys
-from multiprocessing import Process
+import multiprocessing as mp
 
 # Start Script
 
 # Password trying to crack, will convert to password list
-pwd = "pass"
+pwd = "p34"
 
 def cracker():
     # Prints time started
     print "Script Started at " + strftime("%a, %d %b %Y %H:%M:%S +0000")
     letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
                 "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
-                "w", "x", "y", "z"]
+                "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7",
+                "8", "9"]
 
-    length = "1234"
+    length = "123"
 
 
     for i in xrange(sys.maxint):
@@ -25,10 +26,12 @@ def cracker():
             print "Password Cracked. Password is " + guess
             exit()
 
-if __name__ == '__main__':
-    p = Process(target=cracker)
-    p.start().join()
-    #p.join()
+pool = mp.Pool(processes=4)
+results = [pool.apply_async(cracker)]
+output = [p.get() for p in results]
+print output
+
+
 
 
 
