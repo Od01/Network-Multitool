@@ -6,7 +6,7 @@ import multiprocessing as mp
 # Start Script
 
 # Password trying to crack, will convert to password list
-pwd = "p34"
+pwd = "123"
 
 def cracker():
     # Prints time started
@@ -18,18 +18,19 @@ def cracker():
 
     length = "123"
 
-
-    for i in xrange(sys.maxint):
+    i = 0
+    while i == 0:
         guess = ''.join(random.sample(letters, len(length)))
+
         print guess
         if guess == pwd:
             print "Password Cracked. Password is " + guess
-            exit()
+            i = 1
 
 pool = mp.Pool(processes=4)
 results = [pool.apply_async(cracker)]
 output = [p.get() for p in results]
-print output
+# print output
 
 
 
