@@ -10,18 +10,21 @@ def checkUrl(link):
         404, # Not found
         403, #Forbidden
         401, # Unauthorized
-        500, # Internal server erro
+        500, # Internal server error
         503, # Service Unavailable
         504 # Gateway Timeout
 
         ]
 
     status = link.getcode()
-
     if status == statuses[0]:
-        global stat
-        stat = 1
-checkUrl(link)
+        i = True
+        return i
+    else:
+        i = Null
+        print "There is an issue, check your URL."
 
-if stat == 1:
+# Run function to check the URL
+x = checkUrl(link)
+if x == True:
     print "Good to move forward"
