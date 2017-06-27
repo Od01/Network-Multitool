@@ -1,4 +1,5 @@
 from urllib2 import urlopen
+import os.path
 
 url = raw_input("Please type in a valud URL. Do not include the leading 'http://'")
 
@@ -21,10 +22,23 @@ def checkUrl(link):
         i = True
         return i
     else:
-        i = Null
+        i = None
         print "There is an issue, check your URL."
+
+def lookForRobots(link):
+    robot_path = "http://" + str(link) + "/robots.txt"
+    robot_present = os.path.exists(robot_path)
+    if robot_present == True:
+        d = True
+    else:
+        d = None
+        print "There is no robot file"
+
+    return d
 
 # Run function to check the URL
 x = checkUrl(link)
 if x == True:
-    print "Good to move forward"
+    lookForRobots(link)
+if d == True:
+    print "Here be robots"
