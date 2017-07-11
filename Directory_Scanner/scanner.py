@@ -1,10 +1,9 @@
 from urllib2 import urlopen
+import urllib2
+import requests
 import os.path
 
-url = raw_input("Please type in a valud URL. Do not include the leading 'http://'")
-
-link = urlopen("http://" + url)
-
+# Functions
 def checkUrl(link):
     statuses = [
         200, # success
@@ -17,28 +16,31 @@ def checkUrl(link):
 
         ]
 
-    status = link.getcode()
+    a = requests.get("https://" + url)
+    status = a.status_code
     if status == statuses[0]:
         i = True
         return i
     else:
         i = None
-        print "There is an issue, check your URL."
+
+    return i
 
 def lookForRobots(link):
-    robot_path = "http://" + str(link) + "/robots.txt"
-    robot_present = os.path.exists(robot_path)
-    if robot_present == True:
+    robot_path = link + "/robots.txt"
+    robot_present = urllib2.urlopen(robot_path)
+
+    if robot_present == 200:
         d = True
     else:
-        d = None
-        print "There is no robot file"
+        d = "This is bullshit"
 
     return d
 
 # Run function to check the URL
-x = checkUrl(link)
-if x == True:
-    lookForRobots(link)
-if d == True:
-    print "Here be robots"
+url = raw_input("Please type in a valud URL. Do not include the leading 'http://'")
+link = "http://" + url
+
+if checkUrl(link) == True:
+    print "That link exists! Let's look for a robot file"
+    print lookForRobots(link)
