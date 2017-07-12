@@ -35,12 +35,22 @@ def lookForRobots(link):
     else:
         d = "This is bullshit"
 
-    return d
+    robot_present
+
+def lookForSiteMaps(link):
+    sitemap_path = link + "/sitemap.xml"
+    sitemap_present = urllib2.urlopen(sitemap_path)
+
+    for line in sitemap_present:
+        a = line.rstrip()
+
+    return a
 
 # Run function to check the URL
-url = raw_input("Please type in a valud URL. Do not include the leading 'http://'")
+url = raw_input("Please type in a valud URL. Do not include the leading 'http://' ")
 link = "http://" + url
 
 if checkUrl(link) == True:
     print "That link exists! Let's look for a robot file"
     print lookForRobots(link)
+    print lookForSiteMaps(link)
