@@ -30,19 +30,15 @@ def lookForRobots(link):
     robot_path = link + "/robots.txt"
     robot_present = urllib2.urlopen(robot_path)
 
-    if robot_present == 200:
-        d = True
-    else:
-        d = "This is bullshit"
+    a = robot_present.read()
 
-    robot_present
+    return a
 
 def lookForSiteMaps(link):
     sitemap_path = link + "/sitemap.xml"
     sitemap_present = urllib2.urlopen(sitemap_path)
 
-    for line in sitemap_present:
-        a = line.rstrip()
+    a = sitemap_present.read()
 
     return a
 
@@ -52,5 +48,14 @@ link = "http://" + url
 
 if checkUrl(link) == True:
     print "That link exists! Let's look for a robot file"
+
+if lookForRobots(link) == None:
+    print "No Robot"
+else:
     print lookForRobots(link)
+
+if lookForSiteMaps(link) == None:
+    print "There's no sitemap"
+else:
+    print "Displaying sitemap"
     print lookForSiteMaps(link)
