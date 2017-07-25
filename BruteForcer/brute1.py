@@ -16,11 +16,9 @@ def cracker():
 
     i = 0
     while i == 0:
-
         for b in xrange(len(password)): # Creates for loop for number of letters in the password
-
             a = [c for c in characters] # Creates our dataset
-            for y in xrange(b): # For loop to populate b
+            for y in xrange(b):
                 a = [x+c for c in characters for x in a]
 
         location = a.index(password)
