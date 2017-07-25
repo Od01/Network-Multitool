@@ -29,62 +29,31 @@ Please Choose from these Tool:
 4. Sub Domain Scanner
 """
 
-# Port Poker(Port Scanner) | Line 58
-# Hex to Dec Converter | Line 127
-# DNS Lookup | Line 147
-# DNS Brute Force | Line 206
+def toolCall(x):
+
+	os.system('clear')
+	x
 
 user_choice = raw_input("Please select your tool: ")
 
 if user_choice == "1":
-    server = raw_input("Please enter a server ro scan: ")
-    portPoker(server)
+	os.system('clear')
+	print "Welcome to the PortPoker"
+	server = raw_input("Please enter a server ro scan: ")
+	portPoker(server)
 if user_choice == "2":
-    s = raw_input("please enter a hex number to convert: ")
-    hexToDec(s)
+	os.system('clear')
+	s = raw_input("please enter a hex number to convert: ")
+	hexToDec(s)
 if user_choice == "3":
-    record_type = raw_input("Select a Record Type A Records, NS Records, MX Records, TXT Records: ")
-    record_type = record_type.upper()
-    domain = raw_input("Enter a domain to scan, without the leading http://: ")
-    DNSCall(record_type, domain)
+	os.system('clear')
+	record_type = raw_input("Select a Record Type A Records, NS Records, MX Records, TXT Records: ")
+	record_type = record_type.upper()
+	domain = raw_input("Enter a domain to scan, without the leading http://: ")
+	DNSCall(record_type, domain)
 if user_choice == "4":
-    domain = raw_input("Please enter a domain to scan, without the leading http:// ")
-    subDomains(domain)
-"""
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-Network MultiTool
-
-See labels below
-
-"""
-
-"""
-DNS Brute Forcer
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-"""
-
-def subDomains():
-	file1 = open('wordlist.txt', 'r')
-	checklist = file1.read().splitlines()
-	file1.close()
-
-	checkedlist = []
-	checkedfile = open('checked.txt', 'w')
-	site = raw_input('Please enter domain name, do not include http://: ')
-
-	for check in checklist:
-		try:
-			addthis = socket.gethostbyname(check + '.' + site) + '=' + check + '.' + site
-			print addthis
-			checkedlist.insert(0, addthis)
-		except socket.gaierror:
-			print 'nothing found'
-		time.sleep(0.3)
-
-	print 'done checking'
-
-	for results in checkedlist:
-		checkedfile.write(results + '\n')
-	checkedfile.close()
+	os.system('clear')
+	domain = raw_input("Please enter a domain to scan, without the leading http:// ")
+	subDomains(domain)
+else:
+	print "Please make sure what you entered matches the choices."

@@ -1,7 +1,11 @@
 import socket
 import time
+import os
+
+
 
 def subDomains(domain):
+
 	file1 = open('wordlist.txt', 'r')
 	checklist = file1.read().splitlines()
 	file1.close()
@@ -17,7 +21,7 @@ def subDomains(domain):
 			checkedlist.insert(0, addthis)
 		except socket.gaierror:
 			print 'nothing found'
-		time.sleep(0.3)
+			time.sleep(0.3)
 
 	print "Done checking, please see the 'checked.txt' file for the found sub domains"
 

@@ -4,18 +4,6 @@ from threading import Thread
 
 def portPoker(server):
 
-	#clears terminal window and sets up program in terminal
-	os.system('clear')
-	print """
-//    _____           _     _____      _
-//   |  __ \         | |   |  __ \    | |
-//   | |__) |__  _ __| |_  | |__) |__ | | _____ _ __
-//   |  ___/ _ \| '__| __| |  ___/ _ \| |/ / _ \ '__|
-//   | |  | (_) | |  | |_  | |  | (_) |   <  __/ |
-//   |_|   \___/|_|   \__| |_|   \___/|_|\_\___|_|
-//
-//
-	"""
 	# server = raw_input("Please enter a server name ")
 	serv_ip = socket.gethostbyname(server) # connects to server through try
 	print "Please wait, scanning remote host", serv_ip
