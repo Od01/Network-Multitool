@@ -19,7 +19,7 @@ def subDomains(domain):
 			print 'nothing found'
 		time.sleep(0.3)
 
-	print 'done checking'
+	print "Done checking, please see the 'checked.txt' file for the found sub domains"
 
 	for results in checkedlist:
 		checkedfile.write(results + '\n')
