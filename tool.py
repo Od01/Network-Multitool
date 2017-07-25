@@ -7,6 +7,7 @@ import dns.resolver
 from poker import portPoker
 from hexToDec import hexToDec
 from DNSCall import DNSCall
+from subDomains import subDomains
 
 os.system('clear')
 print """
@@ -25,7 +26,7 @@ Please Choose from these Tool:
 1. Port Poker(Port Scanner)
 2. Hex to Dec Converter
 3. DNS Lookup
-4. DNS Brute Force
+4. Sub Domain Scanner
 """
 
 # Port Poker(Port Scanner) | Line 58
@@ -33,7 +34,7 @@ Please Choose from these Tool:
 # DNS Lookup | Line 147
 # DNS Brute Force | Line 206
 
-user_choice = raw_input("Please select your tool!")
+user_choice = raw_input("Please select your tool: ")
 
 if user_choice == "1":
     server = raw_input("Please enter a server ro scan: ")
@@ -47,11 +48,8 @@ if user_choice == "3":
     domain = raw_input("Enter a domain to scan, without the leading http://: ")
     DNSCall(record_type, domain)
 if user_choice == "4":
-	subDomains()
-
-# ^^^ This isn't working
-
-
+    domain = raw_input("Please enter a domain to scan, without the leading http:// ")
+    subDomains(domain)
 """
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
