@@ -25,4 +25,4 @@ class InputSpider(CrawlSpider):
             open(filename, 'ab').write(response.url + "\n")
 
 print "Crawling site..."
-print "See output.txt for links"
+print "See crawler/output.txt for links"

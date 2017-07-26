@@ -9,6 +9,9 @@ from hexToDec import hexToDec
 from DNSCall import DNSCall
 from subDomains import subDomains
 
+sys.path.insert(0, '/home/fuck-you/Projects/Network-Multitool/crawler')
+from run_first import userInput
+
 os.system('clear')
 print """
  __        __   _                            _
@@ -27,12 +30,13 @@ Please Choose from these Tool:
 2. Hex to Dec Converter
 3. DNS Lookup
 4. Sub Domain Scanner
+5. Website Link Crawler
 """
 
 def toolCall(x):
 
 	os.system('clear')
-	x
+	x = x(x)
 
 user_choice = raw_input("Please select your tool: ")
 
@@ -55,5 +59,9 @@ if user_choice == "4":
 	os.system('clear')
 	domain = raw_input("Please enter a domain to scan, without the leading http:// ")
 	subDomains(domain)
+if user_choice ==  "5":
+	os.system('clear')
+	user_input = raw_input("Please enter URL. Please do not include http://: ")
+	userInput(user_input)
 else:
 	print "Please make sure what you entered matches the choices."
