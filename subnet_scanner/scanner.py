@@ -1,9 +1,9 @@
 import socket
 
 for addr in range(1,255):
-	str(addr)
 	network_address = '192.168.0.'
 	try:
-		socket.inet_aton(network_address)
+		#str(addr)
+		socket.getaddrinfo(network_address + str(addr), 0)
 	except socket.error:
-		print(network_address + " Not found")		
+		print(network_address + " Not found")
