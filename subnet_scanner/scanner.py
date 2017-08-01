@@ -1,9 +1,11 @@
 import socket
 
-for addr in range(1,255):
-	network_address = '192.168.0.'
+net_addr =  raw_input("Please put in network address, without a node address. Example: 192.168.0 ")
+
+for addr in range(2,255):
+	str(net_addr)
 	try:
 		#str(addr)
-		socket.getaddrinfo(network_address + str(addr), 0)
+		print socket.gethostbyaddr(net_addr + "." + str(addr))
 	except socket.error:
-		print(network_address + " Not found")
+		print(net_addr + "." + str(addr) + " Not found")
