@@ -12,6 +12,17 @@ if last_string == ".":
 	sys.exit()
 
 for addr in range(2,255):
+	# Combine address entered and range number
+	ip = net_addr + "." + str(addr)
+
+	# Validate IP address format
+	try:
+		socket.inet_aton(ip)
+	except socket.error:
+		print "Not a valid IP address, closing scanner."
+		sys.exit()
+
+	# Check the address
 	try:
 		print socket.gethostbyaddr(net_addr + "." + str(addr))
 		print net_addr + "." + str(addr) + " is alive"
