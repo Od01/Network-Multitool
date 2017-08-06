@@ -2,13 +2,15 @@ import socket
 import sys
 import os
 
-net_addr =  raw_input("Please put in network address, without a node address. Example: 192.168.0 ")
+net_addr =  raw_input("Please put in network address, without a node address. Example: 192.168.000 or 010.001.056\n")
 last_string = net_addr[-1:]
-
-# print socket.gethostbyaddr("10.0.2.15")
+length_string = len(net_addr)
 
 if last_string == ".":
-	print "Please enter a network address with the format '192.168.0' please don't include the . at the end."
+	print "Please enter a network address with the format '192.168.000' or 010.001.056 please don't include the . at the end."
+	sys.exit()
+if length_string != 11:
+	print "Please enter a network address with the format '192.168.000' or 010.001.056 please don't include the . at the end."
 	sys.exit()
 
 for addr in range(2,255):
