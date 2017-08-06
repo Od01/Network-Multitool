@@ -24,11 +24,7 @@ for addr in range(2,255):
 
 	# Check the address
 	try:
-		print socket.gethostbyaddr(net_addr + "." + str(addr))
-		print net_addr + "." + str(addr) + " is alive"
-		#host_up = True if os.system("ping -c 1 " + net_addr + "." + str(addr)) is 0 else False
-		#if host_up == True:
-			#print net_addr + "." + addr + " is alive"
+		print socket.gethostbyaddr(ip)
+		print ip + " is alive"
 	except socket.error:
-		#print(net_addr + "." + str(addr) + " Not found")
-		print "no"
+		print "Nothing is alive at " + ip
