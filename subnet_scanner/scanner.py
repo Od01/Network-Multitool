@@ -2,6 +2,7 @@ import socket
 import sys
 import os
 from threading import Thread
+import thread
 
 net_addr =  raw_input("Please put in network address, without a node address. Example: 192.168.000 or 010.001.056\n")
 last_string = net_addr[-1:]
@@ -33,9 +34,11 @@ def addr_checker(net_addr):
 		except socket.error:
 			print "Nothing is alive at " + ip
 
-		size = 20
-		for i in range(1, 1000, size):
-			t = Thread(target=addr_checker, args=(i, i+size))
-			t.start
+#		size = 20
+#		for i in range(1, 1000, size):
+#			t = Thread(target=addr_checker, args=(i, i+size))
+#			t.start
+	for i in range(1,100):
+		i = thread.start_new_thread(addr_checker, (net_addr,))
 
 addr_checker(net_addr)
