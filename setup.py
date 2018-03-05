@@ -11,9 +11,17 @@ if sys.version_info[0] > 2:
 else:
     print "Running Correct Python Version grabbing dependancies..."
 
-try:
-    os.system("sudo pip install dnspython")
-    os.system("sudo pip install scrapy")
-    os.system("sudo pip install multiprocessing")
-except ValueError:
-    print "Could not install all required packages"
+# Check for platform and change the pip install commands
+if platform == "linux" or platform == "linux2":
+    # linux
+    try:
+        os.system("sudo pip install dnspython")
+        os.system("sudo pip install scrapy")
+        os.system("sudo pip install multiprocessing")
+    except ValueError:
+        print "Could not install all required packages"
+elif platform == "win32":
+    # Windows...
+        os.system("pip install dnspython")
+        os.system("pip install scrapy")
+        os.system("pip install multiprocessing")
